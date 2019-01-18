@@ -1,0 +1,21 @@
+=============== Nov 4, 2018 (STD) ===============
+15:40:04.689395 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+15:40:04.699266 db@open opening
+15:40:04.701205 version@stat F·[] S·0B[] Sc·[]
+15:40:04.705024 db@janitor F·2 G·0
+15:40:04.705076 db@open done T·5.742ms
+16:43:03.320676 memdb@flush N·21189 S·3MiB
+16:43:03.405366 memdb@flush created L0@3 N·21189 S·2MiB ",v21186":"blo..ore,v5"
+16:43:03.405438 version@stat F·[1] S·2MiB[2MiB] Sc·[0.25]
+16:43:03.412803 memdb@flush committed F·1 T·92.035ms
+16:43:03.414037 journal@remove removed @1
+17:47:35.037809 memdb@flush N·21713 S·3MiB
+17:47:35.111087 memdb@flush created L0@5 N·21713 S·2MiB ",v42900":"blo..ore,v21191"
+17:47:35.111274 version@stat F·[2] S·4MiB[4MiB] Sc·[0.50]
+17:47:35.136617 memdb@flush committed F·1 T·98.553ms
+17:47:35.137752 journal@remove removed @2
+18:51:56.709041 memdb@flush N·21628 S·3MiB
+18:51:56.753783 memdb@flush created L0@7 N·21628 S·2MiB ",v64530":"blo..ore,v42905"
+18:51:56.753846 version@stat F·[3] S·6MiB[6MiB] Sc·[0.75]
+18:51:56.761714 memdb@flush committed F·1 T·52.589ms
+18:51:56.762953 journal@remove removed @4

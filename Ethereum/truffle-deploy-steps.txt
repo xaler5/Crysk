@@ -1,0 +1,28 @@
+var initInstance, playerInstance, player, crysk, countries, actions, attacks, logic, market, bombcards, CryskInstance, bombCardsInstance, countriesInstance, actionsInstance, attacksInstance, logicInstance, marketInstance
+
+playersContract.deployed().then(function(instance) {playerInstance = instance;})
+Crysk.deployed().then(function(instance) {CryskInstance = instance;})
+countriesContract.deployed().then(function(instance) {countriesInstance = instance;})
+actionsContract.deployed().then(function(instance) {actionsInstance = instance;})
+marketplaceContract.deployed().then(function(instance) {marketInstance = instance;})
+attacksContract.deployed().then(function(instance) {attacksInstance = instance;})
+logicContract.deployed().then(function(instance) {logicInstance = instance;})
+bombCards.deployed().then(function(instance) {bombCardsInstance = instance;})
+initializer.deployed().then(function(instance) {initInstance = instance;})
+
+player = playerInstance.address
+countries = countriesInstance.address
+crysk = CryskInstance.address
+actions = actionsInstance.address
+attacks = attacksInstance.address
+logic = logicInstance.address
+market = marketInstance.address
+bombcards = bombCardsInstance.address
+initInstance.assignAdr(crysk,logic,player,countries,actions,market,attacks,bombcards)
+initInstance.initCrysk()
+initInstance.initLogic()
+initInstance.initMarket()
+initInstance.initAttack()
+initInstance.initActions()
+initInstance.initDatabase()
+initInstance.initBombCard()

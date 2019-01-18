@@ -1,0 +1,51 @@
+-Open ubuntu shell and type:
+
+cd ..
+cd ..
+cd mnt/c/users/mauri/Desktop/CryskLoom/loom
+./loom run
+
+On a cmd console type:
+
+cd C:\Users\mauri\Desktop\CryskLoom\loom
+truffle.cmd migrate --reset --network loom_dapp_chain
+truffle.cmd console --network loom_dapp_chain
+
+Inside the loom_dapp_chain console type:
+
+var initInstance, playerInstance, player, crysk, countries, actions, attacks, logic, market, bombcards, CryskInstance, bombCardsInstance, countriesInstance, actionsInstance, attacksInstance, logicInstance, marketInstance
+playersContract.deployed().then(function(instance) {playerInstance = instance;})
+Crysk.deployed().then(function(instance) {CryskInstance = instance;})
+countriesContract.deployed().then(function(instance) {countriesInstance = instance;})
+actionsContract.deployed().then(function(instance) {actionsInstance = instance;})
+marketplaceContract.deployed().then(function(instance) {marketInstance = instance;})
+attacksContract.deployed().then(function(instance) {attacksInstance = instance;})
+logicContract.deployed().then(function(instance) {logicInstance = instance;})
+bombCards.deployed().then(function(instance) {bombCardsInstance = instance;})
+initializer.deployed().then(function(instance) {initInstance = instance;})
+player = playerInstance.address
+countries = countriesInstance.address
+crysk = CryskInstance.address
+actions = actionsInstance.address
+attacks = attacksInstance.address
+logic = logicInstance.address
+market = marketInstance.address
+bombcards = bombCardsInstance.address
+initInstance.assignAdr(crysk,logic,player,countries,actions,market,attacks,bombcards)
+initInstance.initCrysk()
+initInstance.initLogic()
+initInstance.initMarket()
+initInstance.initAttack()
+initInstance.initActions()
+initInstance.initDatabase()
+initInstance.initBombCard()
+
+Run the test environment:
+
+npm run dev
+
+Go on localhost:3000 and user login information to log-in
+
+Public Key: 70,166,232,57,233,44,152,130,22,121,183,32,51,120,38,231,232,19,114,16,178,111,213,197,115,204,211,143,226,135,233,21
+
+Private Key: 57,117,122,173,162,48,129,46,88,166,86,196,164,53,240,103,31,127,201,46,96,129,200,120,61,31,117,240,125,49,89,22,70,166,232,57,233,44,152,130,22,121,183,32,51,120,38,231,232,19,114,16,178,111,213,197,115,204,211,143,226,135,233,21

@@ -1,0 +1,11 @@
+=============== Nov 4, 2018 (STD) ===============
+15:40:04.707415 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+15:40:04.717459 db@open opening
+15:40:04.719157 version@stat F·[] S·0B[] Sc·[]
+15:40:04.722862 db@janitor F·2 G·0
+15:40:04.722924 db@open done T·5.424ms
+17:59:13.904346 memdb@flush N·31234 S·3MiB
+17:59:13.949850 memdb@flush created L0@3 N·31234 S·971KiB "abc..y:1,v8":"val..999,v3997"
+17:59:13.949943 version@stat F·[1] S·971KiB[971KiB] Sc·[0.25]
+17:59:13.955780 memdb@flush committed F·1 T·51.33ms
+17:59:13.956887 journal@remove removed @1

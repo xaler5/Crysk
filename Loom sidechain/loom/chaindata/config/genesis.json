@@ -1,0 +1,15 @@
+{
+  "genesis_time": "0001-01-01T00:00:00Z",
+  "chain_id": "default",
+  "validators": [
+    {
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "pJ7d1dFtpZrbkCY2wVZcxBXGH8n+ka0Sr7rw3bferXY="
+      },
+      "power": "10",
+      "name": ""
+    }
+  ],
+  "app_hash": ""
+}

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0, user-scalable=0">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">-->
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title >Crysk</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125700785-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-125700785-1');
+    </script>
+
+  </head>
+  <body data-blink="">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.7/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="https://unilogue.github.io/js/map/datamaps.world.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/loom-js@1.30.1/dist/loom.umd.js"></script>
+    <!--<script src="js/datamaps.world.hires.min.js"></script>-->
+
+    <script src="js/app.js"></script>
+    <!--<script src="js/app.js"></script>-->
+
+    <!--fullscreen Button -->
+    <button type="button" id="fullScreenButton" onclick="toggleFullScreen()"><p class="thick"><i class="fas fa-arrows-alt"></i></p></button>
+
+    <!-- Check Metamask modal -->
+    <div class="modal fade" id="metamaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="metamaskModalLabel">Checking connection to Ethereum</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="errorMetamask">Checking....</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- loading circle-->
+    <div id="loadingContainer">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Switch view -->
+    <div id="menuViews">
+      <div class="row" id="viewsRow">
+        <button class="btn col btn-dark text-white viewButton" style="background: rgb(10, 20, 41);" onclick="App.changeView('globalview')"><p class="thick"><i class="fas fa-globe" id="globalview"></i></p></button>
+        <button class="btn col btn-dark viewButton" style="background: rgb(10, 20, 41);" onclick="App.changeView('btcview')"><p class="thick"><i class="fas fa-globe" id="btcview"></i></p></button>
+        <button class="btn col btn-dark viewButton" style="background: rgb(10, 20, 41);" onclick="App.changeView('bchview')"><p class="thick"><i class="fas fa-globe" id="bchview"></i></p></button>
+        <button class="btn col btn-dark viewButton" style="background: rgb(10, 20, 41);" onclick="App.changeView('ethview')"><p class="thick"><i class="fas fa-globe" id="ethview"></i></p></button>
+        <button class="btn col btn-dark viewButton" style="background: rgb(10, 20, 41);" onclick="App.changeView('xrpview')"><p class="thick"><i class="fas fa-globe" id="xrpview"></i></p></button>
+        <button class="btn col btn-dark yoursViewButton" style="background: rgb(10, 20, 41);" onclick="App.changeView('yoursview')"><p class="thick"><font id="yoursview">My countries</font></p></button>
+      </div>
+    </div>
+
+    <!-- Initial Dialog -->
+    <div class="modal fade bd-example-modal-lg " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg " role="document">
+        <div class="modal-content text-white bg-dark">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Welcome to Crysk</h5>
+          </div>
+          <div class="modal-body">
+          <p>This is a blockchain based and strategy game. Inspired by the famous Risk this game simulate a world-conquer race between various teams.</p>
+          <p>As this game is based on Ethereum blockchain every state changing action consume gas and must be paid. We tried to bring you the most efficient game in terms of gas consumption.</p>
+          <li>Choose your favourite team between BTC, BCH, ETH or XRP and decentralize yourself conquering the world</li>
+          <li>Buy an unowned country at a base price or an already owned country to the indicated price. Everytime you buy a country its price will double up giving you potential gains</li>
+          <li>If you can't afford buying a country you can always buy armies and try to invade that country. Invading rules are not relying on randomness </li>
+          <li>You will earn experience points that will make you grow. Upgrading your level will give you fractional discounts on the price of the actions</li>
+          <li>252 countries, even the little ones, reachable with an interactive and dinamical high resolution world map provided by http://datamaps.github.io/. Icons provided in part by Freepik from www.flaticon.com </li>
+          <p>In order to start setup a nickname and choose a team</p>
+          </div>
+          <div class="modal-footer">
+            <div class="input-group ">
+              <select class="custom-select" id="inputGroupSelect2">
+                <option value="1">team BTC</option>
+                <option value="2">team BCH</option>
+                <option value="3">team ETH</option>
+                <option value="4">team XRP</option>
+              </select>
+            </div>
+              <!-- loading circle -->
+              <div id="loadingModalContainer">
+                <div class="loader"></div>
+              </div>
+            <input type="email" class="form-control" id="initialNickname" aria-describedby="emailHelp" placeholder="Type your nickname">
+            <button type="button" class="btn btn-primary multi-line-button" id="dialogPlay">Signup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Title -->
+    <div id="title">
+        <img class="card-img-top " src="./logo.png" alt="Card image cap" id="imgTitle">
+    </div>
+
+    <!-- logOpen -->
+    <div class="btn multi-line-button" id="logOpen"><font color="white" id="logMenuColor"><i class="fas fa-angle-double-up"></i></font></div>
+
+    <!-- Player menu -->
+    <button class="btn multi-line-button" id="menuToggle"><font color="white" id="playerMenuColor"><i class="fas fa-user-circle" id="iconPlayer"></i></font></button>
+
+    <!-- Market menu -->
+    <button class="btn multi-line-button" id="marketToggle"><font color="white" id="marketMenuColor"><i class="fas fa-shopping-cart" id="iconMarket"></i></font></button>
+
+    <!-- body map-->
+    <div class="stretchy-wrapper" id="wrapper">
+        <div class="" id="div">
+
+        </div>
+    </div>
+
+    <!-- country info-->
+    <div id="popUp2" class="pop_up_background">
+        <div id="lock" style="display: none;">
+          <div class="card">
+            <div class="card-text text-center" style="width: 18rem;">
+              <div class="card-body-adapted" style="background-color: red;">
+                <p class="card-text thick" id="blocksleft">LOCKED Blocks left:</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body text-white" id="Countrycard">
+              <h5 class="card-title font-weight-bold text-primary " id="selectedState"></h5>
+
+              <!-- owner button -->
+              <button class="btn multi-line-button" id="ownedCountryToggle"><font color="white" id="ownedcountryColor"><i class="fas fa-cog" id="iconSettings"></i></font></button>
+              <p id="Price" class="thick card-text"></p>
+              <p id="Army" class="thick card-text"></p>
+              <p id="LifePts" class="thick card-text"></p>
+              <p id="Owner" class="thick card-text breakText"></p>
+              <div class="row" id="optionsRaw">
+
+                <!-- Attack/Defense buttons-->
+                <div class="input-group col">
+
+                  <!-- Attack Input and BUTTON -->
+                  <input class="form-control" type="number" value="1" id="attackingInput" min=0 oninput="validity.valid||(value='0');">
+                  <div class="input-group-append">
+                    <button id="Attack" type="button" class="btn btn-outline-secondary multi-line-button col" onclick="App.invade()" style="margin-left: 2%"><img class="attackIcon" src="./images/swords.png"></button>
+                  </div >
+                  <!-- BUY BUTTON -->
+                  <button id="Buy" type="button" class="btn btn-outline-secondary text-white multi-line-button col" onclick="App.Buy()" style="margin-left: 4%"><p class="thick"><i class="fas fa-hand-holding-usd buyIcon"></i></p></button>
+                  <!-- cards -->
+                  <button type="button" class="btn text-white" data-toggle="modal" id="bombcardsBtn" onclick="showCardsActive()"><i class="fab fa-accusoft" id="cardsBars"></i></button>
+
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <!--player info-->
+    <div id="popUp" class="pop_up_background">
+        <div class="card-body text-white" id="PlayerCard">
+            <!-- Button trigger cards -->
+            <button type="button" class="btn multi-line-button" id="cardsBarsButton" data-toggle="modal" onclick="showCards()"><font color="white" id="cardsMenuColor"><i class="fab fa-accusoft" id="cardsBars"></i></font></button>
+
+            <!-- settings button -->
+            <button class="btn multi-line-button" id="settingsToggle"><font color="white" id="settingsColor"><i class="fas fa-cog" id="iconSettings"></i></font></button>
+
+            <h5 class="card-title" id="nick">Nickname:</h5>
+            <p id="exp" class="thick multi-line-button card-text">Experience: </p>
+            <div class="row levelrow">
+              <p id="lvl" class="thick card-text">Level: </p>
+              <button id="upgradesButton" type="button" class="btn btn-outline-secondary text-white multi-line-button" onclick="App.showUpgrades()"><p class="thick">Upgrade!</p></button>
+            </div>
+            <p id="atck" class="thick card-text">Attack power: </p>
+            <p id="dfns" class="thick card-text">Defense power: </p>
+            <p id="addr" class="thick card-text">Address: </p>
+            <p id="team" class="thick card-text">Team: </p>
+          <div class="row">
+              <p id="army" class="thick card-text col">Armies: </p>
+              <div class="input-group col">
+                 <input class="form-control" type="number" value="0" id="armiesnum" min=0 oninput="validity.valid||(value='0');">
+                <div class="input-group-append">
+                  <button id="buyarmies" type="button" class="btn btn-outline-secondary text-white multi-line-button" onclick="App.BuyArmy()"><p class="thick" id="armyBtn"><i class="fas fa-user-plus"></i>
+                  </p></button>
+                </div>
+              </div>
+          </div>
+          <p id="owncntrs" class="thick card-text">Owned countries: </p>
+        </div>
+    </div>
+
+    <!--Other player info-->
+    <div id="popUp3" class="pop_up_background">
+        <div class="card-body text-white" id="otherPlayerCard">
+            <h5 class="card-title" id="othernick">Nickname:</h5>
+
+            <p id="otherexp" class="thick multi-line-button card-text">Experience: </p>
+            <p id="otherlvl" class="thick card-text">Level: </p>
+            <p id="otheratck" class="thick card-text">Attack power: </p>
+            <p id="otherdfns" class="thick card-text">Defense power: </p>
+            <p id="otheraddr" class="thick card-text">Address: </p>
+            <div class="row">
+              <p id="otherteam" class="thick card-text col">Team: </p>
+            </div>
+          <div class="row">
+              <p id="otherarmy" class="thick card-text col">Armies: </p>
+          </div>
+          <p id="otherowncntrs" class="thick card-text">Owned countries: </p>
+        </div>
+    </div>
+
+    <!-- Settings -->
+    <div id="popUp4" class="pop_up_background">
+      <div class="card-body text-white" id="settingsCard">
+        <form class="form-inline">
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="email" class="form-control" id="nickname" aria-describedby="emailHelp" placeholder="..nickname..">
+          </div>
+          <button id="changeNick"  type="submit" class="btn btn-outline-secondary text-white mb-2"><p class="thick">Change</p></button>
+        </form>
+        <!--<button onclick="showNickNameDialog()" data-toggle="tooltip" title="" data-original-title="'" id="tooltipChangeNick">Change Nickname</button>-->
+        <div class="row">
+          <div class="input-group col">
+            <select class="custom-select" id="inputGroupSelect">
+              <option selected><p >Choose...</p></option>
+              <option id='BTCoption' value="1">BTC</option>
+              <option id='BCHoption' value="2">BCH</option>
+              <option id='ETHoption' value="3">ETH</option>
+              <option id='XRPoption' value="4">XRP</option>
+            </select>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary text-white multi-line-button" id="changeTeamButton" type="button" onclick="App.setTeam()"><p class="thick">Change team</p></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Owned country Settings -->
+    <div id="popUp6" class="pop_up_background">
+      <div class="card-body text-white" id="ownedcountrySettingsCard">
+
+        <!-- LifePoints -->
+        <div class="row" id="lifepointsrow">
+          <div class="input-group col" id="lifepointsbtn">
+            <input class="form-control" type="number" value="0" id="lifepointsnum" min=0 oninput="validity.valid||(value='0');">
+            <div class="input-group-append">
+              <button id="buyLifePoints" type="button" class="btn btn-outline-secondary text-white multi-line-button" onclick="App.buyLifePoints()">
+                <p class="thick" style="margin-right: -55%; margin-left: -55%;">LPTs</p></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- addSoldier Input and BUTTON -->
+        <div class="row rowButtons">
+          <input class="form-control" type="number" value="1" id="defendingInput" min=0 oninput="validity.valid||(value='0');" >
+          <div class="input-group-append">
+            <button id="defendingIn" type="button" class="btn btn-outline-secondary text-white multi-line-button col" onclick="App.addSoldiers()"><p class="thick" id="addDefenseId"class="thick"><i class="fas fa-user-plus"></i></p></button>
+          </div >
+        </div>
+        <!-- subSoldier Input and BUTTON -->
+        <div class="row rowButtons">
+          <input class="form-control" type="number" value="1" id="defendingOutput" min=0 oninput="validity.valid||(value='0');" >
+          <div class="input-group-append">
+            <button id="defendingOut" type="button" class="btn btn-outline-secondary text-white multi-line-button col" onclick="App.subSoldiers()"><p class="thick" id="subDefenseId"class="thick"><i class="fas fa-user-minus"></i></p></button>
+          </div >
+        </div>
+      </div>
+    </div>
+
+    <!-- Log terminal window-->
+    <ul class="logs" id="list"></ul>
+
+    <!-- Info MODAL  -->
+    <div id="info">
+    </div>
+
+    <!-- nextLevel Modal -->
+    <div id="nextlevel">
+      <div class="modal fade text-white" id="nextlevelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-dark" id="exampleModalLabel">Level UP !</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body bg-dark text-white">Chose your upgrade</div>
+            <div class="modal-footer bg-dark text-white">
+              <button class="btn btn-light text-dark" id="upgradeDefense">Upgrade defense power</button>
+              <button class="btn btn-light text-dark" id="upgradeArmyDamage">Upgrade attack power</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards-->
+    <div class="modal fade" id="cardsModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body bg-dark">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner" id="appendOnLoad">
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MarketPlace -->
+    <div id="popUp5" class="pop_up_background">
+      <div class="card-body text-white bg-dark" id="marketCard">
+        <div class="card" id="bomb1">
+          <div id="availabilityBomb1" class="availabilityBomb"><p>loading availability</p></div>
+          <img class="card-img-top " src="./images/bomb1.png" alt="Card image cap">
+          <div class="card-text text-center" >
+            <div class="card-body-adapted" id="bomb1adapted">
+              <h5 class="card-title">Bomb1</h5>
+              <p class="card-text">Remove 50% of lifepoints</p>
+              <a href="#" class="btn btn-primary" onclick="App.buyBomb(1)" style="margin-top: 6%;">Buy</a>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="bomb2">
+          <div id="availabilityBomb2" class="availabilityBomb"><p>loading availability</p></div>
+          <img class="card-img-top " src="./images/bomb2.png" alt="Card image cap">
+          <div class="card-text text-center">
+            <div class="card-body-adapted">
+              <h5 class="card-title">Bomb2</h5>
+              <p class="card-text">Remove 50% of lifepoints and 25% of armies</p>
+              <a href="#" class="btn btn-primary" onclick="App.buyBomb(2)">Buy</a>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="bomb3">
+          <div id="availabilityBomb3" class="availabilityBomb"><p>loading availability</p></div>
+          <img class="card-img-top " src="./images/bomb3.png" alt="Card image cap">
+          <div class="card-text text-center" >
+            <div class="card-body-adapted">
+              <h5 class="card-title">Bomb3</h5>
+              <p class="card-text">Remove 99% of lifepoints and all the armies</p>
+              <a href="#" class="btn btn-primary" onclick="App.buyBomb(3)">Buy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <label class="switch">
+      <input type="checkbox" checked id="viewSwitcher">
+      <span class="slider round" id="sliderColor"></span>
+      <p class="thick text-white" id="sliderText" style="position: relative; margin-top: 10%; margin-left: 10%;">3D 2D</p>
+    </label>
+
+    <div id="mobileMenu" style="display: none">
+      <div id="popUp7" class="pop_up_background">
+        <div class="card-body text-white bg-dark" id="mobileCard">
+          <button class="btn multi-line-button" id="marketToggle"><font color="white" id="marketMenuColor"><i class="fas fa-shopping-cart" id="iconMarket"></i></font></button>
+          <button class="btn col btn-dark text-white viewButton" style="background: rgba(0,0,0,0);" onclick="App.changeView('globalview')"><p class="thick"><i class="fas fa-globe" id="globalview"></i></p></button>
+          <button class="btn col btn-dark viewButton" style="background: rgba(0,0,0,0);" onclick="App.changeView('btcview')"><p class="thick"><i class="fas fa-globe" id="btcview"></i></p></button>
+          <button class="btn col btn-dark viewButton" style="background: rgba(0,0,0,0);" onclick="App.changeView('bchview')"><p class="thick"><i class="fas fa-globe" id="bchview"></i></p></button>
+          <button class="btn col btn-dark viewButton" style="background: rgba(0,0,0,0);" onclick="App.changeView('ethview')"><p class="thick"><i class="fas fa-globe" id="ethview"></i></p></button>
+          <button class="btn col btn-dark viewButton" style="background: rgba(0,0,0,0);" onclick="App.changeView('xrpview')"><p class="thick"><i class="fas fa-globe" id="xrpview"></i></p></button>
+          <button class="btn col yoursViewButton" style="background: rgba(0,0,0,0);" onclick="App.changeView('yoursview')"><p class="thick"><font id="yoursview">My countries</font></p></button>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn multi-line-button" id="mobileSettings"><font color="white" id="ownedcountryColor"><i class="fas fa-cog" id="mobileIconSettings"></i></font></button>
+
+    <!-- Login -->
+    <div id="loginModalBox">
+      <div class="modal fade text-white" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+
+            <style type="text/css">
+
+              #login {
+                width: 15%;
+              }
+
+              .login-form {
+                width: 340px;
+                  margin: 50px auto;
+              }
+                .login-form form {
+                  margin-bottom: 15px;
+                    background: #f7f7f7;
+                    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+                    padding: 30px;
+                }
+                .login-form h2 {
+                    margin: 0 0 15px;
+                }
+                .form-control, .btn {
+                    min-height: 38px;
+                    border-radius: 2px;
+                }
+                .btn {
+                    font-size: 15px;
+                    font-weight: bold;
+                }
+            </style>
+
+            <div class="modal-header">
+              <h5 class="modal-title text-dark" id="exampleModalLabel">Crysk login !</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body bg-dark text-white" id="expandableInfo">
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Public key" required="required" id="publicKey">
+              </div>
+              <div class="form-group">
+                  <input type="password" class="form-control" placeholder="Private key" required="required" id="privateKey">
+              </div>
+            </div>
+            <div class="modal-footer bg-dark text-white" id="loginFooter">
+                <p class="text-center" id="createAccount" ><a href="#">Create an Account</a></p>
+                <button class="btn btn-primary btn-block" id="login">Log in</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,1126 @@
+html {
+  max-width: 100%;
+  max-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  cursor: pointer;
+}
+
+html:-webkit-full-screen {
+    background-color: rgb(0,15,30);
+    cursor: pointer;
+}
+
+body {
+    max-width: 100%;
+    /*background-image: url("../background.jpg");*/
+    background-color: rgb(0,15,30);
+    font-family: arial;
+    cursor: pointer;
+
+}
+
+h5 {
+    font-size: 1.25em;
+    max-width: 92%;
+}
+
+h1 {
+  
+  font-size: 2em;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+p.thick {
+  
+  font-weight: bold;
+}
+
+svg {
+display: block;
+position: absolute;
+width: 100%;
+height: 100%;
+cursor: pointer;
+pointer-events: auto;
+}
+
+g {
+  cursor: pointer;
+}
+
+.switch {
+  position: fixed;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  top: 0.5%;
+  margin-left: 77%;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.datamap {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  cursor: pointer;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.red {
+    background: rgb(152, 28, 28);
+}
+
+.viewButton {
+  max-width: 3rem;
+  border-radius: 0rem;
+}
+
+.yoursViewButton {
+  max-width: 8rem;
+  border-radius: 0rem;
+}
+
+
+[data-blink] {
+    -webkit-transition: background .1s ease-in-out;
+    -ms-transition:     background .1s ease-in-out;
+    transition:         background .1s ease-in-out;
+}
+
+.loader {
+  position: absolute;
+  border: 2em solid #969696;
+  border-radius: 55%;
+  border-right: 0.8em solid rgb(255, 51, 51);
+  border-bottom: 0.8em solid rgb(51, 204, 51);
+  border-left: 0.8em solid rgb(255, 255, 26);
+  border-top: 0.8em solid rgb(26, 117, 255);
+  margin-top: 45%;
+  margin-left: 50%;
+  width: 3em;
+  height: 3em;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+.close {display: none;}
+
+.pop_up_background {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: rgba(247, 247, 247, 0.1);
+    display: none;
+    z-index: 0;
+}
+
+
+.card-text {
+  white-space: normal;
+    word-wrap: break-word; 
+}
+
+.card-title {
+  
+  margin-bottom: .75em;
+}
+
+.card-body {
+  padding: 1.25em;
+  max-width: 105%;
+  border-radius: 25px;
+  background: rgb(0,0,0);
+  border: 3px solid darkslategrey;
+}
+
+.rowButtons {
+  max-width: 100%;
+  margin-top: 3%;
+  margin-left: 16%;
+}
+
+.hideOnMobile { 
+  
+  display: block;
+}
+
+#mobileSettings {
+  display: none;
+}
+
+.modal-body {
+  word-wrap: break-word;
+}
+
+.multi-line-button { 
+  white-space: normal;
+  word-wrap: break-word; 
+}
+
+.col-5 {
+  flex: 0 0 55%;
+  max-width: 50%;
+}
+
+.stretchy-wrapper {
+  
+  max-width: 100%;
+  position: fixed;
+  margin-top: -6%;
+  cursor: pointer;
+}
+
+#wrapper {
+  width: 100%;
+}
+
+.availabilityBomb {
+  display: block;
+  position: relative;
+  margin-top: -8%;
+}
+
+.carousel {
+  height: 60vh;
+}
+
+.carouselCard {
+    width: 20rem;
+    margin-left: 16%;
+    margin-top: 5%;
+    border: solid 4px red;
+}
+
+.hide {
+  display: none;
+}
+
+.card-body-adapted {
+  padding: 1.25em;
+  max-width: 105%;
+  border-radius: 0px;
+  background: rgb(0,0,0);
+  border: 3px solid black;
+}
+
+.stretchy-wrapper > div {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  z-index: -1;
+  color: white;
+  max-width: 75%;
+}
+
+.levelrow {
+  margin-left: 0%;
+}
+
+.breakText {
+  word-wrap: break-word;
+}
+
+.input-group {
+  max-height: 2.2rem;
+}
+
+#optionsRaw {
+  width: 100%;
+}
+
+#buyLifePoints {
+  position: absolute;
+  width: 44%;
+  height: 2.2rem;
+}
+
+#lock {
+  width: 15.1%;
+  display: block;
+  position: fixed;
+  margin-left: 68%;
+  margin-top: 16%;
+  z-index: 1;
+}
+
+#selectedState {
+  width: 85%;
+}
+
+#inputGroupSelect2 {
+  max-width: 35%;
+  margin-left: 70%;
+  margin-top: -0.8%;
+}
+
+#initialNickname {
+  width: 35%;
+}
+
+#cardsBarsButton {
+  display: block;
+  position: fixed;
+  margin-top: 0%;
+  margin-left: 17%;
+  background: rgb(0, 0, 0);
+}
+
+#fullScreenButton {
+  display: block;
+  z-index: 45;
+  position: fixed;
+  margin-left: 3%;
+  margin-top: 0.5rem;
+  /* width: 3rem; */
+  height: 2rem;
+
+}
+
+#bomb1 {
+  width: 19rem;
+  height: 29.7rem;
+  display: block;
+  position: absolute;
+  border: 1px solid black;
+  margin-top: 3%;
+  margin-left: 0%;
+}
+
+#bomb1adapted{
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 39%;
+}
+
+#bomb2 {
+  width: 18rem;
+  border: 1px solid black;
+  display: block;
+  position: absolute;
+  margin-left: 33%;
+  margin-top: 3%;
+}
+
+#bomb3 {
+  width: 18rem;
+  border: 1px solid black;
+  display: block;
+  position: absolute;
+  margin-left: 65%;
+  margin-top: 3%;
+}
+
+#bombcardsBtn {
+  display: block;
+  position: relative;
+  background-color: rgba(0,0,0,0);
+  margin-top: 1%;
+  left: 5%;
+}
+
+#cardsBars {
+  font-weight: 900;
+  font-size: 1.5em;
+}
+
+#inputGroupSelect {
+  max-width: 51%;
+  margin-left: 4%;
+}
+
+#upgradesButton {
+  display: block;
+  margin-left: 40%;
+  max-height: 4vh;
+}
+
+#settingsToggle {
+  display: block;
+  position: fixed;
+  background: rgb(0,0,0);
+  margin-top: 0%;
+  margin-left: 21%;
+}
+
+#marketToggle {
+  display: block;
+  position: fixed;
+  margin-left: 73%;
+  height: 55px;
+  background: rgba(0, 0, 0,0);
+  z-index: 2;
+}
+
+#marketCard {
+  display: block;
+  position: fixed;
+  margin-top: 10%;
+  margin-left: 25%;
+  width: 50%;
+  height: 60%;
+}
+
+#settingsCard {
+  display: block;
+  position: fixed;
+  margin-top: 4%;
+  width: 25%;
+  margin-left: 5%;
+}
+
+#iconSettings {
+  font-weight: 900;
+  font-size: 1.5em;
+}
+
+#lifepointsbtn {
+  max-width: 45%;
+  margin-left: 20%;
+}
+
+#lifepointsrow {
+  max-width: 100%;
+  margin-top: 3%;
+  margin-left: -12%;
+}
+
+#list {
+  border-radius: 6px;
+  overflow-y: scroll;
+  display: none;
+  position: fixed;
+  width: 40%;
+  height: 25%;
+  top: 70%;
+  left: 30%;
+  background-color: rgba(191,191,191,0.5);
+}
+
+#otherPlayerCard {
+  display: block;
+  position: fixed;
+  margin-left: 40%;
+  margin-top: 15%;
+}
+
+#closeCountryButton {
+  display: none;
+  position: absolute;
+  margin-top: -2%;
+  margin-left: 70%;
+}
+
+#ownedCountryToggle {    
+  display: block;
+  position: fixed;
+  margin-left: 19rem;
+  margin-top: -3rem;
+  background: rgb(0,0,0);
+}
+
+#viewsRow {
+  max-height: 4vh;
+}
+
+
+#btcview {
+  color: rgb(255, 51, 51);
+}
+
+#bchview {
+  color: rgb(51, 204, 51);
+}
+
+#ethview {
+  color: rgb(26, 117, 255);
+}
+
+#xrpview {
+  color: rgb(255, 255, 26);
+}
+
+#changeNick {
+  height: 4vh;
+}
+
+#changeTeamButton {
+  margin-left: 3%;
+  display: block;
+  position: absolute;
+  width: 34%;
+  height: 4vh;
+}    
+
+#tooltipChangeNick {
+    margin-left: 50%;
+    color: blue;
+    font-style: italic;
+}
+
+#addDefenseId {
+    margin-left: -7%;
+}
+
+#logOpen {
+  display: block;
+  position: fixed;
+  left: 48%;
+  top: 89%;
+  font-weight: 900;
+  font-size: 5em;
+  z-index: 2;
+}
+
+#menuViews {
+  width: 20%;
+  margin-left: 82%;
+  display: block;
+  position: fixed;
+  z-index: 2;
+}
+
+#loadingContainer {
+  max-width: 10%;
+  display: block;
+  position: absolute;
+  top: 94%;
+  left: 97%;
+}
+
+#loadingModalContainer {
+  max-width: 10%;
+  display: none;
+  position: absolute;
+  top: 90%;
+  left: 37%;
+}
+
+#ownedcountrySettingsCard {
+  width: 15%;
+  height: 20%;
+  margin-top: 5%;
+  margin-left: 60%;
+}
+
+#Countrycard {
+  position: absolute;
+  margin-top: 5%;
+  margin-left: 65%;
+  display: block;
+  position: relative;
+  width: 40vh;
+  height: 30vh;
+}
+
+#title {
+  position: fixed;
+  z-index: 1;
+  margin-top: 0%;
+  margin-left: 48%;
+  font-size: 2vh;
+}
+
+#Buy {
+  max-height: 4vh;
+  max-width: 3rem;
+}
+
+#imgTitle {
+    width: 180px;
+    height: 80px;
+    margin-top: -10%;
+    margin-left: -25%;
+}
+
+#logLine {
+  
+  margin-left: -5.5%;
+}
+
+#iconPlayer {
+  font-weight: 900;
+  font-size: 2em;
+}
+
+#iconMarket {
+  font-weight: 900;
+  font-size: 1.5em;
+}
+
+#div {
+    width: 100%;
+    height: 76rem;
+    margin: 0 auto;
+    z-index: -1;
+    cursor: pointer;
+}
+
+#defendingIn {
+  position: relative;
+  display: none;
+  max-height: 4vh;
+  border-radius: 4px;
+}
+
+#defendingOut {
+  position: relative;
+  display: none;
+  max-height: 4vh;
+  border-radius: 4px;
+}
+
+#Attack {
+  border-radius: 4px;
+}
+
+.attackIcon {
+  margin-top: -15%;
+}
+
+.buyIcon {
+  font-weight: 900;
+  font-size: 2em;
+  margin-top: -20%;
+  margin-left: -20%;
+}
+
+#attackingInput {
+  display: none;
+  border-radius: 4px;
+}
+
+#defendingInput {
+  margin-left: -2%;
+  border-radius: 4px;
+  display: none;
+  width: 80px;
+}
+
+#defendingOutput {
+  margin-left: -2%;
+  border-radius: 4px;
+  display: none;
+  width: 80px;
+}
+
+#bombing {
+  max-width: 20%;
+  display: none;
+  max-height: 4vh;
+}
+
+#PlayerCard {
+  display: inline-block;
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  z-index: 1;
+}
+
+#menuToggle {
+  position: fixed;
+  display: block;
+  background: rgba(0,0,0,0);
+  z-index: 2;
+}
+
+#closeMenuButton {
+  display: none;
+  position: absolute;
+  margin-top: 5%;
+}
+
+#rotateToLandscape {
+  display: none;
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 1500px) {
+    body{font-size: 15px;}
+
+    .stretchy-wrapper {
+      margin-top: 0%;
+    }
+    .col-5 {
+      flex: 0 0 55%;
+      max-width: 50%;
+    }
+
+    .carouselCard {
+      margin-top: 0%;
+    }
+
+    #playerCard {
+      width: 40%;
+    }
+
+    #bomb1 {
+      width: 15rem;
+      margin-left: 8%;
+      height: 27rem;
+    }
+
+    #settingsCard {
+      width: 38%;
+      margin-left: 6%;
+      margin-top: 5%;
+    }
+
+    #bomb2 {
+      margin-left: 37%;
+      width: 15rem;
+      height: 24rem;
+    }
+
+    #bomb3 {
+      margin-left: 65%;
+      width: 15rem;
+      height: 24rem;
+    }
+
+    #inputGroupSelect {
+      margin-left: 3%;
+      max-width: 44%;
+    }
+
+    #settingsToggle {
+      margin-left: 27%;
+    }
+
+    #cardsBarsButton {
+      margin-left: 23%;
+    }
+
+    #marketCard {
+      display: block;
+      position: fixed;
+      margin-top: 10%;
+      margin-left: 15%;
+      width: 70%;
+      height: 60%;
+    }
+
+    #bomb1adapted {
+      height: 43%;
+    }
+
+    #defending {
+      position: relative;
+    }
+
+
+    #optionsRaw {
+      max-height: 4vh;
+      max-width: 95%;
+    }
+
+    #addDefenseId {
+      margin-left: -4%;
+    }
+
+    #subDefenseId {
+      margin-left: -4%;
+    }
+
+    #lock {
+      margin-left: 64%;
+      margin-top: 18.5%;
+      width: 20.2%;
+    }
+
+    #Countrycard {
+      margin-left: 60%;
+      width: 28%;
+    }
+
+    #ownedcountrySettingsCard {
+      width: 20%;
+    }
+
+    #armiesnum {
+      margin-left: -20%;
+    }
+
+    #div {
+      width: 90%;
+    }
+
+    #title {
+      margin-top: 1%;
+      margin-left: 47%;
+    }
+
+    #bombsnum {
+      margin-left: -20%;
+    }
+
+    #logClose {
+      margin-left: 95%;
+    }
+
+    #loadingContainer {
+      left: 96%;
+    }
+
+    #viewsRow {
+      margin-left: -15%;
+    }
+
+    #logLine {
+      margin-left: -10.5%;
+    }
+}    
+
+@media (max-width: 1300px) {
+
+  #armiesnum {
+    margin-left: -28%;
+  }
+
+  #lock {
+    width: 22.65%;
+  }
+
+  #bombsnum {
+    margin-left: -28%;
+  }
+
+  #inputGroupSelect {
+    height: 100%;
+  }
+
+  body{font-size: 13.5px;}
+}
+
+@media (max-width: 500px) {
+
+  .stretchy-wrapper {
+    margin-top: -20%;
+  }
+
+  #ownedCountryToggle {    
+    margin-left: 10rem;
+    margin-top: -2rem;
+  }
+
+  #logOpen {
+    left: 43%;
+    top: 36rem;
+  }
+
+  #imgTitle {
+    margin-left: -80%;
+  }
+
+  #loadingContainer {
+    left: 88%;
+    top: 93%;
+  }
+
+  #PlayerCard {
+    left: 2%;
+    right: 2%;
+  }
+
+  #menuViews {
+    display: none;
+  }
+
+  #marketToggle {
+    display: block;
+    margin-left: 18rem;
+    margin-top: -0.2rem;
+  }
+
+  #marketCard {
+    margin-top: 15%;
+    margin-left: 1%;
+    width: 99%;
+    height: 70%;
+  }
+
+  #bomb1adapted {
+    height: 59%;
+  }
+
+  #bomb1 {
+    width: 7rem;
+    margin-left: -2%;
+    height: 24rem;
+  }
+
+  #bomb2 {
+    margin-left: 31%;
+    width: 7rem;
+    height: 22rem;
+  }
+
+  #bomb3 {
+    margin-left: 64%;
+    width: 7rem;
+    height: 24rem;
+  }
+
+  .switch {
+    display: none;
+  }
+
+  .carouselCard {
+    width: 14rem;
+    margin-left: 17%;
+  }
+
+  .availabilityBomb {
+    margin-top: 0%;
+  }
+
+  #div {
+    max-width: 75%;
+    width: 100%;
+  }
+
+  #fullScreenButton {
+    margin-left: 5%;
+    margin-top: 38.5rem;
+    display: none;
+  }
+
+  .stretchy-wrapper {
+    max-width: 100%;
+  }
+
+  .carousel-indicators {
+    display: none;
+  }
+
+  #fakeOcean {
+    cx: 11.6rem;
+    cy: 29.5rem;
+    r: 11rem;
+  }
+
+  #optionsRaw {
+    max-width: 100%;
+  }
+
+  #mobileSettings {
+    display: block;
+    position: fixed;
+    margin-left: 88%;
+    margin-top: 1%;
+    background-color: rgba(0,0,0,0);
+  }
+
+  #mobileCard {
+    margin-top: 15%;
+    max-width: 90%;
+    margin-left: 5%;
+  }
+
+  .viewButton {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  #cardsBarsButton {
+    margin-left: 50%;
+  }
+
+  #settingsToggle {
+    margin-left: 70%;
+  }
+
+  #armyBtn {
+    margin-top: -20%;
+  }
+
+  #settingsCard {
+    width: 88%;
+    margin-left: 6%;
+    margin-top: 20%;
+    height: 8rem;
+  }
+
+  #inputGroupSelect {
+    height: 120%;
+  }
+
+  #otherPlayerCard {
+    margin-left: 2%;
+    margin-top: 25%;
+    width: 95%;
+  }
+
+  #title {
+    max-width: 25%;
+    margin-top: -1%;
+    margin-left: 48%;
+  }
+
+  #changeTeamButton {
+    margin-left: 3%;
+    display: block;
+    position: absolute;
+    width: 45%;
+    height: 5vh;
+  }
+
+  #inputGroupSelect2 {
+    max-width: 100%;
+    margin-left: -1%;
+    margin-top: -4%;
+  }
+
+  #nickname {
+    width: 8rem;
+    height: 5vh;
+    margin-left: 4%;
+  }
+
+  #initialNickname {
+    width: 110%;
+  } 
+
+  #changeNick {
+    height: 5vh;
+    position: absolute;
+    margin-left: 45%;
+    margin-top: -1%;
+    width: 45%;
+  }
+
+  #Countrycard {
+    margin-left: 13%;
+    margin-top: 25%;
+    width: 75%;
+    height: 35vh;
+  }
+
+  #Buy {
+    max-height: 3rem;
+    height: 2.3rem;
+  }
+
+  #Attack {
+    height: 2.3rem;
+  }
+
+  #attackingInput {
+    height: 2.3rem;
+  }
+
+  #ownedcountrySettingsCard {
+    height: 10rem;
+    margin-top: 30%;
+    margin-left: 27%;
+    width: 45%;
+  }
+
+  #PlayerCard {
+    top: 4rem;
+  }
+
+  #defendingIn {
+    height: 2.3rem;
+    position: absolute;
+    margin-top: 2.4rem;
+    width: 3rem;
+    margin-left: 4rem;
+    max-height: 20rem;
+  }
+
+  #defendingOut {
+    height: 2.3rem;
+    max-height: 20rem;
+    margin-top: 4.8rem;
+    margin-left: 4rem;
+  }
+
+  #defendingOutput {
+    position: absolute;
+    margin-top: 4.8rem;
+    margin-left: -1rem;
+  }
+
+  #lifepointsbtn {
+    max-width: 7rem;
+    margin-left: 3rem;
+  }
+
+  #defendingInput {
+    position: absolute;
+    margin-top: 2.4rem;
+    margin-left: -1rem;
+  }
+
+  #lifepointsrow {
+    display: block;
+    position: absolute;
+    margin-top: 0.4rem;
+    margin-left: -3.8rem;
+  }
+
+  #list {
+    width: 94%;
+    left: 3%;
+  }
+}
+
