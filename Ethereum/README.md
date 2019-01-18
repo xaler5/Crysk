@@ -3,7 +3,7 @@
 An ethereum blockchain based strategy game.
 
 A demo version can be found at: 
-	https://xaler5.bitbucket.io/
+	https://xaler5.github.io/
 
 There is no max number of players. Everyone is playing on the same map live with all the others players.
 
